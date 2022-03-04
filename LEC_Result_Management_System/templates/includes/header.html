@@ -90,12 +90,23 @@
                </li>
                <li class="nav-item dropdown has-arrow">
                   <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                  <span class="user-img"><img class="rounded-circle" src="{% static 'assets/img/profiles/avatar-01.jpg' %}" width="31" alt="Ryan Taylor"></span>
+                   {% if user.profile_pic == "" %}
+                      <span class="user-img"><img class="rounded-circle" src="{% static 'assets/img/noimg.jpg' %}" width="31" alt="Ryan Taylor"></span>
+
+                   {% else %}
+                  <span class="user-img"><img class="rounded-circle" src="/{{user.profile_pic}}" width="31" alt="Ryan Taylor"></span>
+                   {% endif %}
                   </a>
                   <div class="dropdown-menu">
                      <div class="user-header">
                         <div class="avatar avatar-sm">
-                           <img src="{% static 'assets/img/profiles/avatar-01.jpg' %}" alt="User Image" class="avatar-img rounded-circle">
+                           {% if user.profile_pic == ""%}
+                           <img src="{% static 'assets/img/noimg.jpg' %}" alt="User Image" class="avatar-img rounded-circle">
+
+
+                           {% else %}
+                           <img src="/{{user.profile_pic}}" alt="User Image" class="avatar-img rounded-circle">
+                           {% endif %}
                         </div>
                         <div class="user-text">
                            <h6>{{user.first_name}}&nbsp;{{user.last_name}}</h6>
